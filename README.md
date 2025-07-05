@@ -1,3 +1,3 @@
 # React / Go Web App (Fullstack App)
 
-- A fully fledgeg TODO/Task List application made with React and Golang
+- A fully fledged TODO/Task List application made with React and Golang

@@ -22,3 +22,6 @@
 
 # Air Tmp Folder
 tmp/
+
+# Environemnt Vars
+.env

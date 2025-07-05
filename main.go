@@ -120,7 +120,7 @@ func updateTodo (c *fiber.Ctx) error {
 	return c.Status(200).JSON(fiber.Map{"success": true})
 }
 
-func deleteTodo (c *fiber.Ctx) error {
+func deleteTodo(c *fiber.Ctx) error {
 	id := c.Params("id")
 	objectID, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
@@ -129,9 +129,13 @@ func deleteTodo (c *fiber.Ctx) error {
 
 	filter := bson.M{"_id": objectID}
 
-	_, err = collection.DeleteOne(context.Background(), filter)
+	result, err := collection.DeleteOne(context.Background(), filter)
 	if err != nil {
 		return err
+	}
+
+	if result.DeletedCount == 0 {
+		return c.Status(404).JSON(fiber.Map{"error": "TODO not found"})
 	}
 
 	return c.Status(200).JSON(fiber.Map{"success": true})

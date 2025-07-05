@@ -25,3 +25,6 @@ tmp/
 
 # Environemnt Vars
 .env
+
+# Node Modules
+node_modules/
